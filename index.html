@@ -4,7 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Crypto Chat</title>
+    <!-- Пробуем загрузить с разных CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <!-- Резервный CDN -->
+    <script>
+        // Если первый не загрузился, пробуем второй
+        window.onerror = function(msg, url, line) {
+            if (msg.includes('CryptoJS') || url.includes('crypto-js')) {
+                loadFallbackCrypto();
+            }
+        };
+        
+        function loadFallbackCrypto() {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/crypto-js@4.1.1/crypto-js.min.js';
+            script.onload = function() {
+                console.log('CryptoJS загружен с резервного CDN');
+            };
+            document.head.appendChild(script);
+        }
+    </script>
     <style>
         :root {
             --bg-color: #0b0e11;
@@ -233,4 +252,5 @@
 </body>
 
 </html>
+
 
