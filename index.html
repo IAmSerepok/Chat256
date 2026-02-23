@@ -163,7 +163,7 @@
 </div>
 
 <script>
-    const ENCRYPTED_TOKEN = 'U2FsdGVkX1/pXxuJVnGPg363XH5YO9oylio0jJblEDkOk5QrS2dk6MZSdSuaQBPtf9EwNYBmlVS1plEJEpVYJc46qDoPkB8MkOArZ0cZ1WMhQgm+ko9i7XnFSoGp3mpjrTmHMxv53meHh1bwRzUGTg==';
+    const ENCRYPTED_TOKEN = 'U2FsdGVkX1/Ns3o6wKcnCV+/vL7AoRALble+38+U+iybI0hiQvVBlBE0dkkHMew2Q2fi/RP5FUGTlCX42kf4Sg==';
 
     // Функция для расшифровки при запуске
     function decryptToken() {
@@ -181,6 +181,7 @@
 
     // Использование
     const GITHUB_TOKEN = decryptToken();
+    console.log(GITHUB_TOKEN)
     const GIST_ID = '192eb0e5e58e8f0a0591c8bf53989200';
     const FILE_NAME = 'chat.txt';
 
