@@ -163,7 +163,24 @@
 </div>
 
 <script>
-    const GITHUB_TOKEN = '{{ secrets.CHAT_TOKEN }}'; 
+    const ENCRYPTED_TOKEN = 'U2FsdGVkX1/pXxuJVnGPg363XH5YO9oylio0jJblEDkOk5QrS2dk6MZSdSuaQBPtf9EwNYBmlVS1plEJEpVYJc46qDoPkB8MkOArZ0cZ1WMhQgm+ko9i7XnFSoGp3mpjrTmHMxv53meHh1bwRzUGTg==';
+
+    // Функция для расшифровки при запуске
+    function decryptToken() {
+        const password = "мойсуперсекретныйпароль";
+        if (!password) return null;
+        
+        try {
+            const bytes = CryptoJS.AES.decrypt(ENCRYPTED_TOKEN, password);
+            return bytes.toString(CryptoJS.enc.Utf8);
+        } catch(e) {
+            alert("Неверный пароль");
+            return null;
+        }
+    }
+
+    // Использование
+    const GITHUB_TOKEN = decryptToken();
     const GIST_ID = '192eb0e5e58e8f0a0591c8bf53989200';
     const FILE_NAME = 'chat.txt';
 
